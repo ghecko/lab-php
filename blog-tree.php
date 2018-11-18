@@ -40,8 +40,7 @@
     <h1>Blog tree</h1>
     <hr />
 
-    <div class="box-body">
-        <table class="table table-bordered">
+    <table class="table table-bordered">
     <?php
     //if post does not exists redirect user.
     $mysqli = new mysqli('localhost', 'stellar', 'w7S-XvwqeYAUAE!oV3fS', 'stellar');
@@ -93,7 +92,6 @@
         //echo '<p><a href="viewpost.php?id='.$row['postID'].'">Read More</a></p>';
     }
     echo "</table>";
-    echo "</div>";
     ?>
 
     </div>
