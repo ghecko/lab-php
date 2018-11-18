@@ -61,12 +61,13 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
 			try {
 
 				//insert into database
-				$stmt = $db->prepare('INSERT INTO blog_posts (postTitle,postDesc,postCont,postDate) VALUES (:postTitle, :postDesc, :postCont, :postDate)') ;
+				$stmt = $db->prepare('INSERT INTO blog_posts (postTitle,postDesc,postCont,postDate, auteur) VALUES (:postTitle, :postDesc, :postCont, :postDate, :auteur)') ;
 				$stmt->execute(array(
 					':postTitle' => $postTitle,
 					':postDesc' => $postDesc,
 					':postCont' => $postCont,
-					':postDate' => date('Y-m-d H:i:s')
+					':postDate' => date('Y-m-d H:i:s'),
+                    ':auteur' => $_SESSION['username']
 				));
 
 				//redirect to index page
