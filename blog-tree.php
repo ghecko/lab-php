@@ -29,14 +29,16 @@
         $blog_post = $blog_post->fetch_assoc();
         echo "<h1>".$blog_post['postID']."</h1> par <i>".$blog_post['auteur']."</i><br/>";
         echo "<p>".$blog_post['postTitle']."</p>";
-    }
-    else {
-        $sql = "SELECT postID, postTitle, auteur  FROM blog_posts";
+    } else {
+        $sql = "SELECT postID, postTitle, auteur, postCont  FROM blog_posts";
         if (!$blog_posts = $mysqli->query($sql)) {
             echo "Sorry, the website is experiencing problems.";
             exit;
         }
-        $rows = $blog_posts->fetch_array($blog_posts);
+        $rows = Array();
+        while($row = $blog_posts->fetch_array($blog_posts))
+            $rows = $row;
+        print_r($rows);
         foreach($rows as $row){
             echo "<h1>".$row['postID']."</h1> par <i>".$row['auteur']."</i><br/>";
             echo "<p>".$row['postTitle']."</p>";
