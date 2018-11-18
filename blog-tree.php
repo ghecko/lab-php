@@ -28,7 +28,7 @@
             <div class="box">
                 <div class="box-body">
                     <div class="table-responsive" style="overflow: auto">
-                        <table class="table no-margin">
+                        <table class="table table-bordered">
                         <?php
                         //if post does not exists redirect user.
                         $mysqli = new mysqli('localhost', 'stellar', 'w7S-XvwqeYAUAE!oV3fS', 'stellar');
@@ -52,8 +52,9 @@
                             echo "<tbody>";
                             echo "<tr>";
                             echo "<th>".$blog_post['postID']."</th>";
-                            echo "<th>".$blog_post['auteur']."</th>";
                             echo "<th>".$blog_post['postTitle']."</th>";
+                            echo "<th>".$blog_post['auteur']."</th>";
+                            echo "<th>".$blog_post['postCont']."</th>";
                             echo "</tr>";
                             echo "</tbody>";
                         } else {
@@ -77,8 +78,8 @@
                             foreach ($rows as $row) {
                                 echo "<tr>";
                                 echo "<th>".$row['postID']."</th>";
-                                echo "<th>".$row['auteur']."</th>";
                                 echo "<th>".$row['postTitle']."</th>";
+                                echo "<th>".$row['auteur']."</th>";
                                 echo "</tr>";
                             }
                             echo "</tbody>";
