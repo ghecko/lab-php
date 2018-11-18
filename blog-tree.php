@@ -27,10 +27,10 @@
         $blog_posts = mysql_query("SELECT postID, postTitle, auteur  FROM blog_posts") or die(mysql_error());
         $rows = array();
         while($row = mysql_fetch_array($blog_posts))
-        $rows[] = $row;
+            $rows[] = $row;
         foreach($rows as $row){
-        echo "<h1>".$blog_posts['postID']."</h1> par <i>".$blog_posts['auteur']."</i><br/>";
-        echo "<p>".$blog_posts['postTitle']."</p>";
+            echo "<h1>".$row['postID']."</h1> par <i>".$row['auteur']."</i><br/>";
+            echo "<p>".$row['postTitle']."</p>";
         }
         //echo '<p><a href="viewpost.php?id='.$row['postID'].'">Read More</a></p>';
     }
