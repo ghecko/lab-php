@@ -17,10 +17,16 @@
     <?php
     //if post does not exists redirect user.
     if(isset($_GET['id'])){
-        $blog_post = mysql_query("SELECT postID, postTitle, auteur  FROM blog_posts WHERE postID = ".$_GET['id']) or die(mysql_error());
-        $blog_post = mysql_fetch_assoc($blog_posts);
-        echo "<h1>".$blog_post['postID']."</h1> par <i>".$blog_post['auteur']."</i><br/>";
-        echo "<p>".$blog_post['postTitle']."</p>";
+        try {
+            $blog_post = mysql_query("SELECT postID, postTitle, auteur  FROM blog_posts WHERE postID = ".$_GET['id']) or die(mysql_error());
+            $blog_post = mysql_fetch_assoc($blog_posts);
+            echo "<h1>".$blog_post['postID']."</h1> par <i>".$blog_post['auteur']."</i><br/>";
+            echo "<p>".$blog_post['postTitle']."</p>";
+        }
+        catch (exception $e) {
+            echo $e;
+        }
+
     }
     else {
         echo "list of all blog post here";
