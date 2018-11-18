@@ -36,9 +36,7 @@
             echo "Sorry, the website is experiencing problems.";
             exit;
         }
-        $rows = array();
-        while($row = $blog_posts->fetch_array($blog_posts))
-            $rows[] = $row;
+        $rows = $blog_posts->fetch_array($blog_posts);
         foreach($rows as $row){
             echo "<h1>".$row['postID']."</h1> par <i>".$row['auteur']."</i><br/>";
             echo "<p>".$row['postTitle']."</p>";
