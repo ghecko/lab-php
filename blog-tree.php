@@ -36,10 +36,12 @@
             echo "Sorry, the website is experiencing problems.";
             exit;
         }
-        while($row = $blog_posts->fetch_array($blog_posts, MYSQLI_ASSOC)) {
-            echo "<h1>".$row['postID']."</h1> par <i>".$row['auteur']."</i><br/>";
-            echo "<p>".$row['postTitle']."</p>";
+        $rows = array();
+        while($row = $blog_posts->fetch_assoc()) {
+            $rows[] = $row;
         }
+        echo "<h1>".$row['postID']."</h1> par <i>".$row['auteur']."</i><br/>";
+        echo "<p>".$row['postTitle']."</p>";
         //echo '<p><a href="viewpost.php?id='.$row['postID'].'">Read More</a></p>';
     }
 
