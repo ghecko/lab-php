@@ -30,13 +30,13 @@
         echo "<h1>".$blog_post['postID']."</h1> par <i>".$blog_post['auteur']."</i><br/>";
         echo "<p>".$blog_post['postTitle']."</p>";
     } else {
+        echo "in else";
         $sql = "SELECT postID, postTitle, auteur, postCont  FROM blog_posts";
         if (!$blog_posts = $mysqli->query($sql)) {
             echo "Sorry, the website is experiencing problems.";
             exit;
         }
-        $rows = Array();
-        while($row = $blog_posts->fetch_array($blog_posts)) {
+        while($row = $blog_posts->fetch_array($blog_posts, MYSQLI_ASSOC)) {
             echo "<h1>".$row['postID']."</h1> par <i>".$row['auteur']."</i><br/>";
             echo "<p>".$row['postTitle']."</p>";
         }
