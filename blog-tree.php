@@ -11,28 +11,33 @@
 
 <div id="wrapper">
 
-    <h1>Blog</h1>
+    <h1>Blog tree</h1>
     <hr />
 
     <?php
     //if post does not exists redirect user.
+    $mysqli = new mysqli('localhost', 'stellar', 'w7S-XvwqeYAUAE!oV3fS', 'stellar');
+    if ($mysqli->connect_errno) {
+        echo "ERREUR: Impossible d'établir une connexion avec la base de données";
+    }
     if(isset($_GET['id'])){
-        try {
-            $blog_post = mysql_query("SELECT postID, postTitle, auteur  FROM blog_posts WHERE postID = ".$_GET['id']) or die(mysql_error());
-            $blog_post = mysql_fetch_assoc($blog_posts);
-            echo "<h1>".$blog_post['postID']."</h1> par <i>".$blog_post['auteur']."</i><br/>";
-            echo "<p>".$blog_post['postTitle']."</p>";
+        $sql = "SELECT postID, postTitle, auteur  FROM blog_posts WHERE postID = ".$_GET['id'];
+        if (!$blog_post = $mysqli->query($sql)) {
+            echo "Sorry, the website is experiencing problems.";
+            exit;
         }
-        catch (exception $e) {
-            echo $e;
-        }
-
+        $blog_post = $blog_post->fetch_assoc();
+        echo "<h1>".$blog_post['postID']."</h1> par <i>".$blog_post['auteur']."</i><br/>";
+        echo "<p>".$blog_post['postTitle']."</p>";
     }
     else {
-        echo "list of all blog post here";
-        $blog_posts = mysql_query("SELECT postID, postTitle, auteur  FROM blog_posts") or die(mysql_error());
+        $sql = "SELECT postID, postTitle, auteur  FROM blog_posts";
+        if (!$blog_posts = $mysqli->query($sql)) {
+            echo "Sorry, the website is experiencing problems.";
+            exit;
+        }
         $rows = array();
-        while($row = mysql_fetch_array($blog_posts))
+        while($row = $blog_posts->fetch_array($blog_posts))
             $rows[] = $row;
         foreach($rows as $row){
             echo "<h1>".$row['postID']."</h1> par <i>".$row['auteur']."</i><br/>";
