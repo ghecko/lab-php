@@ -20,7 +20,7 @@
 </head>
 <body>
 
-<section id="wrapper">
+<section id="content-wrapper">
 
     <h1>Blog tree</h1>
     <hr />
