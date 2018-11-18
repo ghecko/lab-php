@@ -29,12 +29,8 @@
     <section class="content">
         <div class="row">
             <div class="box">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Bordered Table</h3>
-                </div>
-                <!-- /.box-header -->
                 <div class="box-body">
-                    <table class="table table-bordered">
+                    <table class="table">
                     <?php
                     //if post does not exists redirect user.
                     $mysqli = new mysqli('localhost', 'stellar', 'w7S-XvwqeYAUAE!oV3fS', 'stellar');
