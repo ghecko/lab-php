@@ -47,7 +47,7 @@
                             echo "<th>ID</th>";
                             echo "<th>Auteur</th>";
                             echo "<th>Titre</th>";
-                            echo "<th>Content</th>";
+                            echo "<th>Contenu</th>";
                             echo "</tr>";
                             echo "</thead>";
                             echo "<tbody>";
@@ -55,7 +55,7 @@
                             echo "<th>".$blog_post['postID']."</th>";
                             echo "<th>".$blog_post['postTitle']."</th>";
                             echo "<th>".$blog_post['auteur']."</th>";
-                            echo "<th>".$blog_post['postCont']."</th>";
+                            echo "<th>".htmlspecialchars($blog_post['postCont'])."</th>";
                             echo "</tr>";
                             echo "</tbody>";
                         } else {
