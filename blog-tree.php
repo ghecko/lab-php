@@ -41,7 +41,7 @@
     <hr />
 
     <div class="box-body">
-        <table class="table table-striped table-bordered">
+        <table class="table table-bordered">
     <?php
     //if post does not exists redirect user.
     $mysqli = new mysqli('localhost', 'stellar', 'w7S-XvwqeYAUAE!oV3fS', 'stellar');
