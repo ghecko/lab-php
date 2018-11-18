@@ -18,7 +18,7 @@
 </head>
 <body>
 
-<div id="wrapper">
+<div id="content-wrapper">
 
     <h1>Blog tree</h1>
     <hr />
