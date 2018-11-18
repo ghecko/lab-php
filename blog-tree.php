@@ -36,7 +36,7 @@
                             echo "ERREUR: Impossible d'établir une connexion avec la base de données";
                         }
                         if(isset($_GET['id'])){
-                            $sql = "SELECT postID, postTitle, auteur  FROM blog_posts WHERE postID = ".$_GET['id'];
+                            $sql = "SELECT postID, postTitle, auteur, postCont  FROM blog_posts WHERE postID = ".$_GET['id'];
                             if (!$blog_post = $mysqli->query($sql)) {
                                 echo "Sorry, the website is experiencing problems.";
                                 exit;
