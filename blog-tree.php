@@ -18,7 +18,7 @@
 </head>
 <body>
 
-<section id="wrapper">
+<div id="wrapper">
 
     <h1>Blog tree</h1>
     <hr />
@@ -86,7 +86,7 @@
         ?>
         </table>
     </div>
-</section>
+</div>
 
 </body>
 </html>
