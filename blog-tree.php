@@ -18,72 +18,95 @@
 </head>
 <body class="hold-transition skin-blue layout-top-nav">
 <div class="wrapper">
-    
-    <h1>Blog tree</h1>
-    <hr />
+    <header class="main-header">
+        <nav class="navbar navbar-static-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a href="/index.php" class="navbar-brand"><b>Stellar</b>Blog</a>
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                </div>
 
-    <div class="col-md-6 text-center">
-        <div class="table-responsive" style="overflow: auto">
-            <table class="table table-bordered">
-            <?php
-            //if post does not exists redirect user.
-            $mysqli = new mysqli('localhost', 'stellar', 'w7S-XvwqeYAUAE!oV3fS', 'stellar');
-            if ($mysqli->connect_errno) {
-                echo "ERREUR: Impossible d'établir une connexion avec la base de données";
-            }
-            if(isset($_GET['id'])){
-                $sql = "SELECT postID, postTitle, auteur, postCont  FROM blog_posts WHERE postID = ".$_GET['id'];
-                if (!$blog_post = $mysqli->query($sql)) {
-                    echo "Sorry, the website is experiencing problems.";
-                    exit;
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+                        <li><a href="#">Link</a></li>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container-fluid -->
+        </nav>
+    </header>
+    <div class="content-wrapper"
+
+        <h1>Blog tree</h1>
+        <hr />
+
+        <div class="col-md-6 text-center">
+            <div class="table-responsive" style="overflow: auto">
+                <table class="table table-bordered">
+                <?php
+                //if post does not exists redirect user.
+                $mysqli = new mysqli('localhost', 'stellar', 'w7S-XvwqeYAUAE!oV3fS', 'stellar');
+                if ($mysqli->connect_errno) {
+                    echo "ERREUR: Impossible d'établir une connexion avec la base de données";
                 }
-                $blog_post = $blog_post->fetch_assoc();
-                echo "<thead>";
-                echo "<tr>";
-                echo "<th>ID</th>";
-                echo "<th>Auteur</th>";
-                echo "<th>Titre</th>";
-                echo "<th>Contenu</th>";
-                echo "</tr>";
-                echo "</thead>";
-                echo "<tbody>";
-                echo "<tr>";
-                echo "<th>".$blog_post['postID']."</th>";
-                echo "<th>".$blog_post['postTitle']."</th>";
-                echo "<th>".$blog_post['auteur']."</th>";
-                echo "<th>".htmlspecialchars($blog_post['postCont'])."</th>";
-                echo "</tr>";
-                echo "</tbody>";
-            } else {
-                $sql = "SELECT postID, postTitle, auteur, postCont  FROM blog_posts";
-                if (!$blog_posts = $mysqli->query($sql)) {
-                    echo "Sorry, the website is experiencing problems.";
-                    exit;
-                }
-                $rows = array();
-                while($row = $blog_posts->fetch_assoc()) {
-                    $rows[] = $row;
-                }
-                echo "<thead>";
-                echo "<tr>";
-                echo "<th>ID</th>";
-                echo "<th>Auteur</th>";
-                echo "<th>Titre</th>";
-                echo "</tr>";
-                echo "</thead>";
-                echo "<tbody>";
-                foreach ($rows as $row) {
+                if(isset($_GET['id'])){
+                    $sql = "SELECT postID, postTitle, auteur, postCont  FROM blog_posts WHERE postID = ".$_GET['id'];
+                    if (!$blog_post = $mysqli->query($sql)) {
+                        echo "Sorry, the website is experiencing problems.";
+                        exit;
+                    }
+                    $blog_post = $blog_post->fetch_assoc();
+                    echo "<thead>";
                     echo "<tr>";
-                    echo "<th>".$row['postID']."</th>";
-                    echo "<th>".$row['postTitle']."</th>";
-                    echo "<th>".$row['auteur']."</th>";
+                    echo "<th>ID</th>";
+                    echo "<th>Auteur</th>";
+                    echo "<th>Titre</th>";
+                    echo "<th>Contenu</th>";
                     echo "</tr>";
+                    echo "</thead>";
+                    echo "<tbody>";
+                    echo "<tr>";
+                    echo "<th>".$blog_post['postID']."</th>";
+                    echo "<th>".$blog_post['postTitle']."</th>";
+                    echo "<th>".$blog_post['auteur']."</th>";
+                    echo "<th>".htmlspecialchars($blog_post['postCont'])."</th>";
+                    echo "</tr>";
+                    echo "</tbody>";
+                } else {
+                    $sql = "SELECT postID, postTitle, auteur, postCont  FROM blog_posts";
+                    if (!$blog_posts = $mysqli->query($sql)) {
+                        echo "Sorry, the website is experiencing problems.";
+                        exit;
+                    }
+                    $rows = array();
+                    while($row = $blog_posts->fetch_assoc()) {
+                        $rows[] = $row;
+                    }
+                    echo "<thead>";
+                    echo "<tr>";
+                    echo "<th>ID</th>";
+                    echo "<th>Auteur</th>";
+                    echo "<th>Titre</th>";
+                    echo "</tr>";
+                    echo "</thead>";
+                    echo "<tbody>";
+                    foreach ($rows as $row) {
+                        echo "<tr>";
+                        echo "<th>".$row['postID']."</th>";
+                        echo "<th>".$row['postTitle']."</th>";
+                        echo "<th>".$row['auteur']."</th>";
+                        echo "</tr>";
+                    }
+                    echo "</tbody>";
+                    //echo '<p><a href="viewpost.php?id='.$row['postID'].'">Read More</a></p>';
                 }
-                echo "</tbody>";
-                //echo '<p><a href="viewpost.php?id='.$row['postID'].'">Read More</a></p>';
-            }
-            ?>
-            </table>
+                ?>
+                </table>
+            </div>
         </div>
     </div>
 </div>
