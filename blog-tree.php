@@ -23,7 +23,7 @@
     <h1>Blog tree</h1>
     <hr />
 
-    <div class="col-md-9">
+    <div class="col-md-6 text-center">
         <div class="table-responsive" style="overflow: auto">
             <table class="table table-bordered">
             <?php
