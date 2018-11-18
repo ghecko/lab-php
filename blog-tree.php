@@ -31,8 +31,8 @@
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
                         <ul class="nav navbar-nav">
-                            <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-                            <li><a href="#">Link</a></li>
+                            <li><a href="/index.php">Blog</a></li>
+                            <li class="active"><a href="/blog-tree.php">Vue d'ensemble</a></li>
                     </div>
                     <!-- /.navbar-collapse -->
                 </div>
@@ -43,7 +43,7 @@
             <div class="container">
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
-                    <h1>Blog tree</h1>
+                    <h1>Vue d'ensemble</h1>
                 </section>
                 <section class="content">
                     <div class="box box-default">
