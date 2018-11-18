@@ -18,11 +18,27 @@ class User extends Password{
 		}
 	}
 
-	private function get_user_hash($username){
+	public function is_admin()
+    {
+        if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+            try {
+                $username = $_SESSION['username'];
+                $stmt = $this->_db->prepare('SELECT is_admin FROM users WHERE username = :username');
+                $stmt->execute(array('username' => $username));
+
+                return $stmt->fetch();
+
+            } catch (PDOException $e) {
+                echo '<p class="error">' . $e->getMessage() . '</p>';
+            }
+        }
+    }
+
+	private function get_user_password($username){
 
 		try {
 
-			$stmt = $this->_db->prepare('SELECT memberID, username, password FROM users WHERE username = :username');
+			$stmt = $this->_db->prepare('SELECT user_id, username, password FROM users WHERE username = :username');
 			$stmt->execute(array('username' => $username));
 
 			return $stmt->fetch();
@@ -35,12 +51,12 @@ class User extends Password{
 
 	public function login($username,$password){
 
-		$user = $this->get_user_hash($username);
+		$user = $this->get_user_password($username);
 
 		if($this->password_verify($password,$user['password']) == 1){
 
 		    $_SESSION['loggedin'] = true;
-		    $_SESSION['memberID'] = $user['memberID'];
+		    $_SESSION['user_id'] = $user['user_id'];
 		    $_SESSION['username'] = $user['username'];
 		    return true;
 		}

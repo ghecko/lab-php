@@ -65,23 +65,23 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
 					$hashedpassword = $user->password_hash($password, PASSWORD_BCRYPT);
 
 					//update into database
-					$stmt = $db->prepare('UPDATE users SET username = :username, password = :password, email = :email WHERE memberID = :memberID') ;
+					$stmt = $db->prepare('UPDATE users SET username = :username, password = :password, email = :email WHERE user_id = :user_id') ;
 					$stmt->execute(array(
 						':username' => $username,
 						':password' => $hashedpassword,
 						':email' => $email,
-						':memberID' => $memberID
+						':user_id' => $user_id
 					));
 
 
 				} else {
 
 					//update database
-					$stmt = $db->prepare('UPDATE users SET username = :username, email = :email WHERE memberID = :memberID') ;
+					$stmt = $db->prepare('UPDATE users SET username = :username, email = :email WHERE user_id = :user_id') ;
 					$stmt->execute(array(
 						':username' => $username,
 						':email' => $email,
-						':memberID' => $memberID
+						':user_id' => $user_id
 					));
 
 				}
@@ -112,8 +112,8 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
 
 		try {
 
-			$stmt = $db->prepare('SELECT memberID, username, email FROM users WHERE memberID = :memberID') ;
-			$stmt->execute(array(':memberID' => $_GET['id']));
+			$stmt = $db->prepare('SELECT user_id, username, email FROM users WHERE user_id = :user_id') ;
+			$stmt->execute(array(':user_id' => $_GET['id']));
 			$row = $stmt->fetch(); 
 
 		} catch(PDOException $e) {
@@ -123,7 +123,7 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
 	?>
 
 	<form action='' method='post'>
-		<input type='hidden' name='memberID' value='<?php echo $row['memberID'];?>'>
+		<input type='hidden' name='user_id' value='<?php echo $row['user_id'];?>'>
 
 		<p><label>Username</label><br />
 		<input type='text' name='username' value='<?php echo $row['username'];?>'></p>

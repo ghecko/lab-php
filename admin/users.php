@@ -11,8 +11,8 @@ if(isset($_GET['deluser'])){
 	//if user id is 1 ignore
 	if($_GET['deluser'] !='1'){
 
-		$stmt = $db->prepare('DELETE FROM users WHERE memberID = :memberID') ;
-		$stmt->execute(array(':memberID' => $_GET['deluser']));
+		$stmt = $db->prepare('DELETE FROM users WHERE user_id = :user_id') ;
+		$stmt->execute(array(':user_id' => $_GET['deluser']));
 
 		header('Location: users.php?action=deleted');
 		exit;
@@ -60,7 +60,7 @@ if(isset($_GET['deluser'])){
 	<?php
 		try {
 
-			$stmt = $db->query('SELECT memberID, username, email FROM users ORDER BY username');
+			$stmt = $db->query('SELECT user_id, username, email FROM users ORDER BY username');
 			while($row = $stmt->fetch()){
 				
 				echo '<tr>';
@@ -69,9 +69,9 @@ if(isset($_GET['deluser'])){
 				?>
 
 				<td>
-					<a href="edit-user.php?id=<?php echo $row['memberID'];?>">Edit</a> 
-					<?php if($row['memberID'] != 1){?>
-						| <a href="javascript:deluser('<?php echo $row['memberID'];?>','<?php echo $row['username'];?>')">Delete</a>
+					<a href="edit-user.php?id=<?php echo $row['user_id'];?>">Edit</a>
+					<?php if($row['user_id'] != 1){?>
+						| <a href="javascript:deluser('<?php echo $row['user_id'];?>','<?php echo $row['username'];?>')">Delete</a>
 					<?php } ?>
 				</td>
 				
