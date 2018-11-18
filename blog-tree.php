@@ -47,6 +47,7 @@
                             echo "<th>ID</th>";
                             echo "<th>Auteur</th>";
                             echo "<th>Titre</th>";
+                            echo "<th>Content</th>";
                             echo "</tr>";
                             echo "</thead>";
                             echo "<tbody>";
