@@ -46,7 +46,7 @@
                     <h1>Blog tree</h1>
                 </section>
                 <section class="content">
-                    <div class="col-md-6 text-center">
+                    <div class="box box-default">
                         <div class="table-responsive" style="overflow: auto">
                             <table class="table table-bordered">
                                 <?php
