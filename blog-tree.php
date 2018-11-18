@@ -16,7 +16,7 @@
        folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="vendor/AdminLTE/dist/css/skins/_all-skins.min.css">
 </head>
-<body>
+<body class="skin-blue layout-boxed">
 
 <div id="content-wrapper">
 
