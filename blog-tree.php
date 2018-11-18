@@ -16,10 +16,6 @@
 
     <?php
     //if post does not exists redirect user.
-    if($row['postID'] == ''){
-        header('Location: ./');
-        exit;
-    }
     if(isset($_GET['id'])){
         $blog_post = mysql_query("SELECT postID, postTitle, auteur  FROM blog_posts WHERE id = ".$_GET['id']) or die(mysql_error());
         $blog_post = mysql_fetch_assoc($blog_posts);
