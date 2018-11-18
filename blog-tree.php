@@ -16,7 +16,7 @@
        folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="vendor/AdminLTE/dist/css/skins/_all-skins.min.css">
 </head>
-<div class="hold-transition skin-blue layout-top-nav" style="height: auto; min-height: 100%;">
+<body class="hold-transition skin-blue layout-top-nav" style="height: auto; min-height: 100%;">
     <div class="wrapper">
         <header class="main-header">
             <nav class="navbar navbar-static-top">
@@ -39,7 +39,7 @@
                 <!-- /.container-fluid -->
             </nav>
         </header>
-        <div class="content-wrapper"
+        <div class="content-wrapper">
             <div class="container">
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
