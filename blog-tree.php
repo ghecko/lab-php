@@ -42,20 +42,6 @@
 
     <div class="box-body">
         <table class="table table-striped table-bordered">
-            <thead>
-            <tr>
-                <th>Name</th>
-                <th>Mission</th>
-                <th>Owner</th>
-                <th>IP address</th>
-                <th>Starting date</th>
-                <th>Stopping date</th>
-                <th>Removing date</th>
-                <th>Status</th>
-                <th>Comments</th>
-                <th></th>
-            </tr>
-            </thead>
     <?php
     //if post does not exists redirect user.
     $mysqli = new mysqli('localhost', 'stellar', 'w7S-XvwqeYAUAE!oV3fS', 'stellar');
@@ -69,8 +55,17 @@
             exit;
         }
         $blog_post = $blog_post->fetch_assoc();
+        echo "<thead>";
+        echo "<tr>";
+        echo "<th>ID</th>";
+        echo "<th>Auteur</th>";
+        echo "<th>Titre</th>";
+        echo "</tr>";
+        echo "</thead>";
+        echo "<tr>";
         echo "<h1>".$blog_post['postID']."</h1> par <i>".$blog_post['auteur']."</i><br/>";
         echo "<p>".$blog_post['postTitle']."</p>";
+        echo "</tr>";
     } else {
         $sql = "SELECT postID, postTitle, auteur, postCont  FROM blog_posts";
         if (!$blog_posts = $mysqli->query($sql)) {
@@ -81,17 +76,27 @@
         while($row = $blog_posts->fetch_assoc()) {
             $rows[] = $row;
         }
+        echo "<thead>";
+        echo "<tr>";
+        echo "<th>ID</th>";
+        echo "<th>Auteur</th>";
+        echo "<th>Titre</th>";
+        echo "</tr>";
+        echo "</thead>";
         foreach ($rows as $row) {
-            echo "<h1>".$row['postID']."</h1> par <i>".$row['auteur']."</i><br/>";
-            echo "<p>".$row['postTitle']."</p>";
+            echo "<tr>";
+            echo "<th>".$row['postID']."</th>";
+            echo "<th>".$row['auteur']."</th>";
+            echo "<th>".$row['postTitle']."</th>";
+            echo "</tr>";
         }
         //echo '<p><a href="viewpost.php?id='.$row['postID'].'">Read More</a></p>';
     }
-
+    echo "</table>";
+    echo "</div>";
     ?>
 
-</div>
-
+    </div>
 
 </body>
 </html>
