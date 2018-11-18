@@ -29,7 +29,7 @@
         <div class="row">
             <div class="box">
                 <div class="box-body">
-                    <table class="table">
+                    <table class="table no-margin">
                     <?php
                     //if post does not exists redirect user.
                     $mysqli = new mysqli('localhost', 'stellar', 'w7S-XvwqeYAUAE!oV3fS', 'stellar');
