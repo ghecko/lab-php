@@ -25,7 +25,7 @@
 
     <div class="col-md-6 text-center">
         <div class="table-responsive" style="overflow: auto">
-            <table class="table">
+            <table class="table table-bordered">
             <?php
             //if post does not exists redirect user.
             $mysqli = new mysqli('localhost', 'stellar', 'w7S-XvwqeYAUAE!oV3fS', 'stellar');
