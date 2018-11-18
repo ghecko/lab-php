@@ -1,6 +1,5 @@
 <?php require('includes/config.php'); ?>
 <!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="utf-8">
     <title>Stellar blog</title>
@@ -51,10 +50,12 @@
                         echo "<th>Titre</th>";
                         echo "</tr>";
                         echo "</thead>";
+                        echo "<tbody>";
                         echo "<tr>";
                         echo "<h1>".$blog_post['postID']."</h1> par <i>".$blog_post['auteur']."</i><br/>";
                         echo "<p>".$blog_post['postTitle']."</p>";
                         echo "</tr>";
+                        echo "</tbody>";
                     } else {
                         $sql = "SELECT postID, postTitle, auteur, postCont  FROM blog_posts";
                         if (!$blog_posts = $mysqli->query($sql)) {
@@ -72,6 +73,7 @@
                         echo "<th>Titre</th>";
                         echo "</tr>";
                         echo "</thead>";
+                        echo "<tbody>";
                         foreach ($rows as $row) {
                             echo "<tr>";
                             echo "<th>".$row['postID']."</th>";
@@ -79,6 +81,7 @@
                             echo "<th>".$row['postTitle']."</th>";
                             echo "</tr>";
                         }
+                        echo "</tbody>";
                         //echo '<p><a href="viewpost.php?id='.$row['postID'].'">Read More</a></p>';
                     }
                     ?>
