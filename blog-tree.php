@@ -65,17 +65,17 @@
                                     echo "<thead>";
                                     echo "<tr>";
                                     echo "<th>ID</th>";
-                                    echo "<th>Auteur</th>";
                                     echo "<th>Titre</th>";
                                     echo "<th>Contenu</th>";
+                                    echo "<th>Auteur</th>";
                                     echo "</tr>";
                                     echo "</thead>";
                                     echo "<tbody>";
                                     echo "<tr>";
                                     echo "<th>".$blog_post['postID']."</th>";
                                     echo "<th>".$blog_post['postTitle']."</th>";
-                                    echo "<th>".$blog_post['auteur']."</th>";
                                     echo "<th>".htmlspecialchars($blog_post['postCont'])."</th>";
+                                    echo "<th>".$blog_post['auteur']."</th>";
                                     echo "</tr>";
                                     echo "</tbody>";
                                 } else {
@@ -91,8 +91,8 @@
                                     echo "<thead>";
                                     echo "<tr>";
                                     echo "<th>ID</th>";
-                                    echo "<th>Auteur</th>";
                                     echo "<th>Titre</th>";
+                                    echo "<th>Auteur</th>";
                                     echo "</tr>";
                                     echo "</thead>";
                                     echo "<tbody>";
