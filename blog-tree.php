@@ -52,8 +52,9 @@
                         echo "</thead>";
                         echo "<tbody>";
                         echo "<tr>";
-                        echo "<h1>".$blog_post['postID']."</h1> par <i>".$blog_post['auteur']."</i><br/>";
-                        echo "<p>".$blog_post['postTitle']."</p>";
+                        echo "<th>".$blog_post['postID']."</th>";
+                        echo "<th>".$blog_post['auteur']."</th>";
+                        echo "<th>".$blog_post['postTitle']."</th>";
                         echo "</tr>";
                         echo "</tbody>";
                     } else {
