@@ -36,10 +36,7 @@
             exit;
         }
         $rows = Array();
-        while($row = $blog_posts->fetch_array($blog_posts))
-            $rows = $row;
-        print_r($rows);
-        foreach($rows as $row){
+        while($row = $blog_posts->fetch_array($blog_posts)) {
             echo "<h1>".$row['postID']."</h1> par <i>".$row['auteur']."</i><br/>";
             echo "<p>".$row['postTitle']."</p>";
         }
