@@ -71,7 +71,7 @@
                                     echo "</thead>";
                                     echo "<tbody>";
                                     $rows = array();
-                                    while($row = $blog_posts->fetch_assoc()) {
+                                    while($row = $blog_post->fetch_assoc()) {
                                         $rows[] = $row;
                                     }
                                     foreach ($rows as $row) {
