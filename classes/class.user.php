@@ -25,8 +25,12 @@ class User extends Password{
                 $username = $_SESSION['username'];
                 $stmt = $this->_db->prepare('SELECT admin FROM users WHERE username = :username');
                 $stmt->execute(array('username' => $username));
-
-                return $stmt->fetch();
+				$admin = $stmt->fetch();
+                if ($admin['admin'] === 1) {
+                	return true;
+				} else {
+                	return false;
+				}
 
             } catch (PDOException $e) {
                 echo '<p class="error">' . $e->getMessage() . '</p>';
