@@ -55,13 +55,14 @@ class User extends Password{
 
 	public function login($username,$password){
 
-		$user = $this->get_user_password($username);
+		$user = $this->get_user_infos($username);
 
 		if($this->password_verify($password,$user['password']) == 1){
 
 		    $_SESSION['loggedin'] = true;
 		    $_SESSION['user_id'] = $user['user_id'];
 		    $_SESSION['username'] = $user['username'];
+		    $_SESSION['picture'] = $user['pictures'];
 		    return true;
 		}
 	}
