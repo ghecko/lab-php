@@ -43,6 +43,9 @@
                             <!-- Menu Toggle Button -->
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <!-- The user image in the navbar-->
+                                <?php
+                                echo "<img src=data:image/jpeg;base64,".base64_encode($_SESSION['picture'])." class='user-image' alt='User Image'>"
+                                ?>
                                 <img src="../../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
                                 <!-- hidden-xs hides the username on small devices so only the image appears. -->
                                 <span class="hidden-xs">Alexander Pierce</span>
