@@ -98,7 +98,7 @@
                                     echo "<tbody>";
                                     foreach ($rows as $row) {
                                         echo "<tr>";
-                                        echo "<th>".$row['postID']."</th>";
+                                        echo "<th><a href='/blog-tree.php?id='".$row['postID'].">".$row['postID']."</a></th>";
                                         echo "<th>".$row['postTitle']."</th>";
                                         echo "<th>".$row['auteur']."</th>";
                                         echo "</tr>";
