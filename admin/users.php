@@ -4,6 +4,10 @@ require_once('../includes/config.php');
 
 //if not logged in redirect to login page
 if(!$user->is_logged_in()){ header('Location: login.php'); }
+if(!$user->is_admin()) {
+    http_response_code(403);
+    die('Forbidden');
+}
 
 //show message from add / edit page
 if(isset($_GET['deluser'])){ 
