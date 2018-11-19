@@ -23,7 +23,7 @@ class User extends Password{
         if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
             try {
                 $username = $_SESSION['username'];
-                $stmt = $this->_db->prepare('SELECT is_admin FROM users WHERE username = :username');
+                $stmt = $this->_db->prepare('SELECT admin FROM users WHERE username = :username');
                 $stmt->execute(array('username' => $username));
 
                 return $stmt->fetch();
