@@ -71,22 +71,24 @@
                                     echo "</tr>";
                                     echo "</thead>";
                                     echo "<tbody>";
-                                    echo "<tr>";
-                                    echo "<th>".$blog_post['postID']."</th>";
-                                    echo "<th>".$blog_post['postTitle']."</th>";
-                                    echo "<th>".strip_tags($blog_post['postDesc'])."</th>";
-                                    echo "<th>".$blog_post['auteur']."</th>";
-                                    echo "</tr>";
+                                    $rows = array();
+                                    while($row = $blog_posts->fetch_assoc()) {
+                                        $rows[] = $row;
+                                    }
+                                    foreach ($rows as $row) {
+                                        echo "<tr>";
+                                        echo "<th>" . $blog_post['postID'] . "</th>";
+                                        echo "<th>" . $blog_post['postTitle'] . "</th>";
+                                        echo "<th>" . strip_tags($blog_post['postDesc']) . "</th>";
+                                        echo "<th>" . $blog_post['auteur'] . "</th>";
+                                        echo "</tr>";
+                                    }
                                     echo "</tbody>";
                                 } else {
                                     $sql = "SELECT postID, postTitle, auteur, postCont  FROM blog_posts";
                                     if (!$blog_posts = $mysqli->query($sql)) {
                                         echo "Sorry, the website is experiencing problems.";
                                         exit;
-                                    }
-                                    $rows = array();
-                                    while($row = $blog_posts->fetch_assoc()) {
-                                        $rows[] = $row;
                                     }
                                     echo "<thead>";
                                     echo "<tr>";
@@ -96,6 +98,10 @@
                                     echo "</tr>";
                                     echo "</thead>";
                                     echo "<tbody>";
+                                    $rows = array();
+                                    while($row = $blog_posts->fetch_assoc()) {
+                                        $rows[] = $row;
+                                    }
                                     foreach ($rows as $row) {
                                         echo "<tr>";
                                         echo "<th><a href='/blog-tree.php?id=".$row['postID']."'>".$row['postID']."</a></th>";
