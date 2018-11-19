@@ -45,7 +45,7 @@
                 if(isset($_GET['page'])) {
                     include($_GET['page'] . ".php");
                 } else {
-                    include('blog.php');
+                    header('Location: index.php?page=blog');
                 }
             ?>
         </div>
