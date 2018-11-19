@@ -61,7 +61,6 @@
                                 ?>
                                 <!-- hidden-xs hides the username on small devices so only the image appears. -->
                                 <?php echo "<span class='hidden-xs'>".$_SESSION['username']."</span>"; ?>
-                                Alexander Pierce
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- Menu Footer-->
