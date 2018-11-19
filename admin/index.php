@@ -65,7 +65,7 @@ if(isset($_GET['delpost'])){
 
 				<td>
 					<a href="edit-post.php?id=<?php echo $row['postID'];?>">Edit</a> | 
-					<a href="javascript:delpost('<?php echo $row['postID'];?>','<?php echo htmlspecialchars($row['postTitle']);?>')">Delete</a>
+					<a href="javascript:delpost('<?php echo $row['postID'];?>','<?php echo addslashes($row['postTitle']);?>')">Delete</a>
 				</td>
 				
 				<?php 
