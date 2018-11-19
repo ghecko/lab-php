@@ -65,10 +65,8 @@
                             <ul class="dropdown-menu">
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
-                                    <div class="pull-left">
+                                    <div class="btn-group">
                                         <a href="#" class="btn btn-info">Profile</a>
-                                    </div>
-                                    <div class="pull-right">
                                         <a href="#" class="btn btn-danger">Sign out</a>
                                     </div>
                                 </li>
