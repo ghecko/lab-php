@@ -31,8 +31,8 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li><a href="/index.php">Blog</a></li>
-                        <li class="active"><a href="/blog-tree.php">Vue d'ensemble</a></li>
+                        <li class="active"><a href="/index.php">Blog</a></li>
+                        <li><a href="/blog-tree.php">Vue d'ensemble</a></li>
                 </div>
                 <!-- /.navbar-collapse -->
             </div>
