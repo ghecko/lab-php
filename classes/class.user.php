@@ -38,11 +38,11 @@ class User extends Password{
         }
     }
 
-	private function get_user_password($username){
+	private function get_user_infos($username){
 
 		try {
 
-			$stmt = $this->_db->prepare('SELECT user_id, username, password FROM users WHERE username = :username');
+			$stmt = $this->_db->prepare('SELECT user_id, username, password, pictures FROM users WHERE username = :username');
 			$stmt->execute(array('username' => $username));
 
 			return $stmt->fetch();
