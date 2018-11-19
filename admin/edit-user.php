@@ -3,6 +3,11 @@ require_once('../includes/config.php');
 
 //if not logged in redirect to login page
 if(!$user->is_logged_in()){ header('Location: login.php'); }
+//if not admin return forbidden
+if(!$user->is_admin()) {
+    http_response_code(403);
+    die('Forbidden');
+}
 ?>
 <!doctype html>
 <html lang="en">
