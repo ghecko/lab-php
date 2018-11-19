@@ -42,6 +42,9 @@
     <div class="content-wrapper">
         <div class="container">
             <?php
+                if(isset($_GET['id'])) {
+                    $id = $_GET['id'];
+                }
                 if(isset($_GET['page'])) {
                     include($_GET['page'] . ".php");
                 } else {
