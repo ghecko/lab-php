@@ -56,7 +56,7 @@
                                     echo "ERREUR: Impossible d'établir une connexion avec la base de données";
                                 }
                                 if(isset($_GET['id'])){
-                                    $sql = "SELECT postID, postTitle, auteur, postCont  FROM blog_posts WHERE postID = ".$_GET['id'];
+                                    $sql = "SELECT postID, postTitle, auteur, postDesc  FROM blog_posts WHERE postID = ".$_GET['id'];
                                     if (!$blog_post = $mysqli->query($sql)) {
                                         echo "Sorry, the website is experiencing problems.";
                                         exit;
@@ -74,7 +74,7 @@
                                     echo "<tr>";
                                     echo "<th>".$blog_post['postID']."</th>";
                                     echo "<th>".$blog_post['postTitle']."</th>";
-                                    echo "<th>".htmlspecialchars($blog_post['postCont'])."</th>";
+                                    echo "<th>".strip_tags($blog_post['postDesc'])."</th>";
                                     echo "<th>".$blog_post['auteur']."</th>";
                                     echo "</tr>";
                                     echo "</tbody>";
