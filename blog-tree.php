@@ -61,7 +61,6 @@
                                         echo "Sorry, the website is experiencing problems.";
                                         exit;
                                     }
-                                    $blog_post = $blog_post->fetch_assoc();
                                     echo "<thead>";
                                     echo "<tr>";
                                     echo "<th>ID</th>";
