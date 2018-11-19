@@ -60,19 +60,10 @@
                                     echo "<img src='".$_SESSION['picture']."' class='user-image' alt='User Image'>";
                                 ?>
                                 <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                                <span class="hidden-xs">Alexander Pierce</span>
+                                <?php echo "<span class='hidden-xs'>".$_SESSION['username']."</span>"; ?>
+                                Alexander Pierce
                             </a>
                             <ul class="dropdown-menu">
-                                <!-- The user image in the menu -->
-                                <li class="user-header">
-                                    <?php
-                                        echo "<img src='".$_SESSION['picture']."' class='img-circle' alt='User Image'>";
-                                    ?>
-                                    <p>
-                                        <?php echo $_SESSION['username']?>
-                                    </p>
-                                </li>
-                                <!-- Menu Body -->
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-left">
