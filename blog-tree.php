@@ -76,10 +76,10 @@
                                     }
                                     foreach ($rows as $row) {
                                         echo "<tr>";
-                                        echo "<th>" . $blog_post['postID'] . "</th>";
-                                        echo "<th>" . $blog_post['postTitle'] . "</th>";
-                                        echo "<th>" . strip_tags($blog_post['postDesc']) . "</th>";
-                                        echo "<th>" . $blog_post['auteur'] . "</th>";
+                                        echo "<th>" . $row['postID'] . "</th>";
+                                        echo "<th>" . $row['postTitle'] . "</th>";
+                                        echo "<th>" . strip_tags($row['postDesc']) . "</th>";
+                                        echo "<th>" . $row['auteur'] . "</th>";
                                         echo "</tr>";
                                     }
                                     echo "</tbody>";
