@@ -94,9 +94,11 @@ if($row['postID'] == ''){
     <div class="content-wrapper">
         <div class="container">
             <?php
-                echo '<div class="box box-primary>"';
-                    echo '<div class="box box-primary>"';
-                        echo '<h3>'.$row['postTitle'].'</h3>';
+                echo '<div class="box box-primary>">';
+                    echo '<div class="box box-primary>">';
+                        echo '<div class="box-header with-border">';
+                            echo '<h1>'.$row['postTitle'].'</h1>';
+                        echo '</div>';
                     echo '</div>';
                     echo '<div class="box-body no-padding">';
                         echo '<p>Posted on '.date('jS M Y', strtotime($row['postDate'])).'</p>';
