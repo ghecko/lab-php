@@ -34,12 +34,12 @@ class User {
         }
     }
 
-	private function get_user_infos($username){
+	private function get_user_infos($email){
 
 		try {
 
-			$stmt = $this->_db->prepare('SELECT user_id, username, password, pictures FROM users WHERE username = :username');
-			$stmt->execute(array('username' => $username));
+			$stmt = $this->_db->prepare('SELECT user_id, username, password, pictures FROM users WHERE email = :email');
+			$stmt->execute(array('email' => $email));
 
 			return $stmt->fetch();
 
@@ -57,9 +57,9 @@ class User {
         }
     }
 
-	public function login($username,$password){
+	public function login($email,$password){
 
-		$user = $this->get_user_infos($username);
+		$user = $this->get_user_infos($email);
 
 		if($this->password_verify($password,$user['password']) == 1){
 

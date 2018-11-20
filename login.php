@@ -42,10 +42,10 @@ if( $user->is_logged_in() ){ header('Location: index.php'); }
     //process login form if submitted
     if(isset($_POST['submit'])){
 
-        $username = trim($_POST['username']);
+        $email = trim($_POST['email']);
         $password = trim($_POST['password']);
 
-        if($user->login($username,$password)){
+        if($user->login($email,$password)){
 
             //logged in return to index page
             header('Location: index.php');
@@ -69,8 +69,8 @@ if( $user->is_logged_in() ){ header('Location: index.php'); }
 
         <form action="login.php" method="post">
             <div class="form-group has-feedback">
-                <input type="text" class="form-control" placeholder="Username" name="username">
-                <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                <input type="text" class="form-control" placeholder="Email address" name="email">
+                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
             </div>
             <div class="form-group has-feedback">
                 <input type="password" class="form-control" placeholder="Password" name="password">
