@@ -31,8 +31,70 @@
 </head>
 <body class="hold-transition register-page">
 <div class="register-box">
+    <?php
+
+    //process login form if submitted
+    if(isset($_POST['submit'])){
+
+        $username = trim($_POST['username']);
+        $email = trim($_POST['email']);
+        $password = trim($_POST['password']);
+
+        if($email == ''){
+            $error[] = 'Please enter the email address.';
+        }
+        if($username == ''){
+            $error[] = 'Please enter the email address.';
+        }
+        if($password == ''){
+            $error[] = 'Please enter the email address.';
+        }
+
+        if(!isset($error)) {
+            try {
+                //check if username or password exist in database
+                $stmt_username = $db->prepare('select username from users where UPPER(username) = :username');
+                $stmt_email = $db->prepare('select email from users where UPPER(email) = :email');
+                $stmt_username->execute(strtoupper($username));
+                $stmt_email->execute(strtoupper($email));
+                if(!$stmt_username->fetch()) {
+                    if(!$stmt_email->fetch()) {
+                        //insert into database
+                        $stmt = $db->prepare('INSERT INTO users (username,password,email) VALUES (:username, :password, :email)');
+                        $stmt->execute(array(
+                            ':username' => $username,
+                            ':password' => $password,
+                            ':email' => $email
+                        ));
+
+                        //redirect to index page
+                        header('Location: index.php');
+                        exit;
+                    } else {
+                        echo '<p class="error">"Email déjà enregistré"</p>';
+                    }
+                } else {
+                    echo '<p class="error">"Username non disponible"</p>';
+                }
+
+            } catch(PDOException $e) {
+                echo $e->getMessage();
+            }
+
+        }
+        //check for any errors
+        if(isset($error)) {
+            foreach($error as $error){
+                echo '<p class="error">'.$error.'</p>';
+            }
+        }
+
+    }//end if submit
+
+    if(isset($message)){ echo $message; }
+    ?>
     <div class="register-logo">
-        <a href="../../index2.html"><b>Stellar</b>Blog</a>
+        <a href="/index.php"><b>Stellar</b>Blog</a>
     </div>
 
     <div class="register-box-body">
@@ -40,15 +102,15 @@
 
         <form action="register.php" method="post">
             <div class="form-group has-feedback">
-                <input type="text" class="form-control" placeholder="Full name">
+                <input type="text" class="form-control" placeholder="Username" name="username">
                 <span class="glyphicon glyphicon-user form-control-feedback"></span>
             </div>
             <div class="form-group has-feedback">
-                <input type="email" class="form-control" placeholder="Email">
+                <input type="email" class="form-control" placeholder="Email" name="email">
                 <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
             </div>
             <div class="form-group has-feedback">
-                <input type="password" class="form-control" placeholder="Password">
+                <input type="password" class="form-control" placeholder="Password" name="password">
                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
             </div>
             <div class="form-group has-feedback">
