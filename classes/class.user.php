@@ -1,14 +1,10 @@
 <?php
 
-include('class.password.php');
-
-class User extends Password{
+class User {
 
     private $db;
 
 	function __construct($db){
-		parent::__construct();
-
 		$this->_db = $db;
 	}
 
@@ -52,6 +48,14 @@ class User extends Password{
 		}
 	}
 
+    public function password_verify($password, $submit_password) {
+        if($password === $submit_password){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 
 	public function login($username,$password){
 
