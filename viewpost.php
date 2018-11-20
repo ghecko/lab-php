@@ -97,12 +97,12 @@ if($row['postID'] == ''){
                 echo '<div class="box box-primary>">';
                     echo '<div class="box box-primary>">';
                         echo '<div class="box-header with-border">';
-                            echo '<h1>'.$row['postTitle'].'</h1>';
+                            echo '<h2>'.$row['postTitle'].'</h2>';
                         echo '</div>';
                     echo '</div>';
                     echo '<div class="box-body no-padding">';
                         echo '<p>Posted on '.date('jS M Y', strtotime($row['postDate'])).'</p>';
-                        echo '<p>'.$row['postCont'].'</p>';
+                        echo $row['postCont'];
                     echo '</div>';
                 echo '</div>';
             ?>
