@@ -118,7 +118,7 @@ if(!$user->is_admin()) {
 
 		try {
 
-			$stmt = $db->prepare('SELECT user_id, username, email, admin FROM users WHERE user_id = :user_id') ;
+			$stmt = $db->prepare('SELECT user_id, username, email FROM users WHERE user_id = :user_id') ;
 			$stmt->execute(array(':user_id' => $_GET['id']));
 			$row = $stmt->fetch(); 
 
@@ -142,9 +142,6 @@ if(!$user->is_admin()) {
 
 		<p><label>Email</label><br />
 		<input type='text' name='email' value='<?php echo $row['email'];?>'></p>
-
-        <p><label>Admin </label>
-        <input type='checkbox' name='admin' value='<?php echo $row['admin'];?>'></p>
 
 		<p><input type='submit' name='submit' value='Update User'></p>
 
