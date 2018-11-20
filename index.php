@@ -53,6 +53,13 @@
                     <?php
                         if($user->is_logged_in()) {
                             echo '<ul class="nav navbar-nav">';
+                            if($user->is_admin()) {
+                                echo '<li class="dropdown user-block-sm user-menu">';
+                                    echo '<a href="/admin/index.php">';
+                                        echo '<i class="fa fa-gears"></i> Admin';
+                                    echo '</a>';
+                                echo '</li>';
+                            }
                                 echo '<li class="dropdown user-block-sm user-menu">';
                                     echo '<a href="#" class="dropdown-toggle" data-toggle="dropdown">';
                                         echo "<img src='".$_SESSION['picture']."' class='user-image' alt='User Image'>";
