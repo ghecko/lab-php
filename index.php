@@ -71,12 +71,12 @@
                         } else {
                             echo '<ul class="nav navbar-nav">';
                                 echo '<li class="dropdown user-block-sm user-menu">';
-                                    echo '<a href="/login.php" class="btn btn-app">';
+                                    echo '<a href="/login.php">';
                                         echo '<i class="fas fa-sign-in-alt"></i> Login';
                                     echo '</a>';
                                 echo '</li>';
                                 echo '<li class="dropdown user-block-sm user-menu">';
-                                    echo '<a href="/register.php" class="btn btn-app">';
+                                    echo '<a href="/register.php">';
                                         echo '<i class="fas fa-user-plus"></i> Login';
                                     echo '</a>';
                                 echo '</li>';
