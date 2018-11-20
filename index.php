@@ -69,9 +69,15 @@
                                 echo '</li>';
                             echo '</ul>';
                         } else {
-                            echo '<div class="btn-group" style="vertical-align: middle;">';
-                                echo '<a href="/login.php" class="btn btn-default">Login</a>';
-                                echo '<a href="" class="btn btn-default">Register</a>';
+                            echo '<div class="nav navbar-btn">';
+                                echo '<a href="/login.php" class="btn btn-app">';
+                                    echo '<i class="fas fa-sign-in-alt"></i> Login';
+                                echo '</a>';
+                            echo '</div>';
+                            echo '<div class="nav navbar-btn">';
+                                echo '<a href="/register.php" class="btn btn-app">';
+                                    echo '<i class="fas fa-user-plus"></i> Login';
+                                echo '</a>';
                             echo '</div>';
                         }
                     ?>
