@@ -38,7 +38,7 @@ class User {
 
 		try {
 
-			$stmt = $this->_db->prepare('SELECT user_id, username, password, pictures FROM users WHERE email = :email');
+			$stmt = $this->_db->prepare('SELECT user_id, username, password, pictures, email FROM users WHERE email = :email');
 			$stmt->execute(array('email' => $email));
 
 			return $stmt->fetch();
