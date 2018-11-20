@@ -53,14 +53,17 @@
         if(!isset($error)) {
             try {
                 //check if username or password exist in database
-                $stmt_username = $db->prepare('select username from users where username = :username');
-                $stmt_email = $db->prepare('select email from users where email = :email');
-                $stmt_username->execute(strtoupper($username));
-                $stmt_email->execute(strtoupper($email));
+                $stmt_username = $db->prepare('select username from users where UPPER(username) = :username');
+                $stmt_email = $db->prepare('select email from users where UPPER(email) = :email');
+                $stmt_username->execute(array(
+                    ':username' => strtoupper($username)
+                ));
+                $stmt_email->execute(array(
+                        ':email' => strtoupper($email)
+                ));
                 $res_username = $stmt_username->fetchAll();
                 $res_email = $stmt_email->fetchAll();
-                echo 'nb result = '.count($res_username).'\n';
-                /*if(count($res_username) == 0) {
+                if(count($res_username) == 0) {
                     if(count($res_email) == 0) {
                         //insert into database
                         $stmt = $db->prepare('INSERT INTO users (username,password,email) VALUES (:username, :password, :email)');
@@ -78,7 +81,7 @@
                     }
                 } else {
                     $error[] = 'Username non disponible';
-                }*/
+                }
 
             } catch(PDOException $e) {
                 echo $e->getMessage();
