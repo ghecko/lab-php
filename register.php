@@ -57,7 +57,9 @@
                 $stmt_email = $db->prepare('select email from users where UPPER(email) = :email');
                 $stmt_username->execute(strtoupper($username));
                 $stmt_email->execute(strtoupper($email));
-                if($stmt_username->rowCount() == 0) {
+                echo $stmt_email->rowCount();
+                echo $stmt_username->rowCount();
+                /*if($stmt_username->rowCount() == 0) {
                     if($stmt_email->rowCount() == 0) {
                         //insert into database
                         $stmt = $db->prepare('INSERT INTO users (username,password,email) VALUES (:username, :password, :email)');
@@ -75,7 +77,7 @@
                     }
                 } else {
                     $error[] = 'Username non disponible';
-                }
+                }*/
 
             } catch(PDOException $e) {
                 echo $e->getMessage();
