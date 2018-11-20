@@ -32,13 +32,13 @@
 <body class="hold-transition register-page">
 <div class="register-box">
     <div class="register-logo">
-        <a href="../../index2.html"><b>Admin</b>LTE</a>
+        <a href="../../index2.html"><b>Stellar</b>Blog</a>
     </div>
 
     <div class="register-box-body">
-        <p class="login-box-msg">Register a new membership</p>
+        <p class="login-box-msg">Inscription</p>
 
-        <form action="../../index.html" method="post">
+        <form action="register.php" method="post">
             <div class="form-group has-feedback">
                 <input type="text" class="form-control" placeholder="Full name">
                 <span class="glyphicon glyphicon-user form-control-feedback"></span>
