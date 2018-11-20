@@ -50,29 +50,31 @@
                 <!-- /.navbar-collapse -->
                 <!-- Navbar Right Menu-->
                 <div class="navbar-custom-menu">
-                    <ul class="nav navbar-nav">
-                        <!-- User Account Menu -->
-                        <li class="dropdown user-block-sm user-menu">
-                            <!-- Menu Toggle Button -->
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <!-- The user image in the navbar-->
-                                <?php
-                                    echo "<img src='".$_SESSION['picture']."' class='user-image' alt='User Image'>";
-                                ?>
-                                <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                                <?php echo "<span class='hidden-xs'>".$_SESSION['username']."</span>"; ?>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <!-- Menu Footer-->
-                                <li class="user-footer">
-                                    <div class="btn-group">
-                                        <a href="#" class="btn btn-info">Profile</a>
-                                        <a href="#" class="btn btn-danger">Sign out</a>
-                                    </div>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
+                    <?php
+                        if($user->is_logged_in()) {
+                            echo '<ul class="nav navbar-nav">';
+                                echo '<li class="dropdown user-block-sm user-menu">';
+                                    echo '<a href="#" class="dropdown-toggle" data-toggle="dropdown">';
+                                        echo "<img src='".$_SESSION['picture']."' class='user-image' alt='User Image'>";
+                                        echo '<?php echo "<span class=\'hidden-xs\'>".$_SESSION[\'username\']."</span>"; ?>';
+                                    echo '</a>';
+                                    echo '<ul class="dropdown-menu">';
+                                        echo '<li class="user-footer">';
+                                            echo '<div class="btn-group">';
+                                                echo '<a href="#" class="btn btn-info">Profile</a>';
+                                                echo '<a href="/logout.php" class="btn btn-danger">Sign out</a>';
+                                            echo '</div>';
+                                        echo '</li>';
+                                    echo '</ul>';
+                                echo '</li>';
+                            echo '</ul>';
+                        } else {
+                            echo '<div class="btn-group">';
+                                echo '<a href="/login.php" class="btn btn-default">Login</a>';
+                                echo '<a href="" class="btn btn-default">Register</a>';
+                            echo '</div>';
+                        }
+                    ?>
                 </div>
                 <!--/.navbar-custom-menu-->
             </div>

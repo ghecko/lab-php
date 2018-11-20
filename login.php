@@ -11,8 +11,8 @@ if( $user->is_logged_in() ){ header('Location: index.php'); }
 <head>
   <meta charset="utf-8">
   <title>Admin Login</title>
-  <link rel="stylesheet" href="../style/normalize.css">
-  <link rel="stylesheet" href="../style/main.css">
+  <link rel="stylesheet" href="style/normalize.css">
+  <link rel="stylesheet" href="style/main.css">
 </head>
 <body>
 
