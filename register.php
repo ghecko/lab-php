@@ -57,8 +57,10 @@
                 $stmt_email = $db->prepare('select email from users where UPPER(email) = :email');
                 $stmt_username->execute(strtoupper($username));
                 $stmt_email->execute(strtoupper($email));
-                if($stmt_username->rowCount() === 0) {
-                    if($stmt_email->rowCount() === 0) {
+                $res_username = $stmt_username->fetch();
+                $res_email = $stmt_email->fetch();
+                if($res_username->rowCount() == 0) {
+                    if($res_email->rowCount() == 0) {
                         //insert into database
                         $stmt = $db->prepare('INSERT INTO users (username,password,email) VALUES (:username, :password, :email)');
                         $stmt->execute(array(
