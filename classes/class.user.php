@@ -26,7 +26,7 @@ class User extends Password{
                 $stmt = $this->_db->prepare('SELECT admin FROM users WHERE username = :username');
                 $stmt->execute(array('username' => $username));
 				$admin = $stmt->fetch();
-                if ($admin['admin'] === 1) {
+                if ($admin[0] === '1') {
                 	return true;
 				} else {
                 	return false;
