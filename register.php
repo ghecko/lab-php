@@ -59,7 +59,8 @@
                 $stmt_email->execute(strtoupper($email));
                 $res_username = $stmt_username->fetchAll();
                 $res_email = $stmt_email->fetchAll();
-                if(count($res_username) == 0) {
+                echo 'nb result = '.count($res_username).'\n';
+                /*if(count($res_username) == 0) {
                     if(count($res_email) == 0) {
                         //insert into database
                         $stmt = $db->prepare('INSERT INTO users (username,password,email) VALUES (:username, :password, :email)');
@@ -77,7 +78,7 @@
                     }
                 } else {
                     $error[] = 'Username non disponible';
-                }
+                }*/
 
             } catch(PDOException $e) {
                 echo $e->getMessage();
