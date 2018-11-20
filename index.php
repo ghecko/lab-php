@@ -56,7 +56,7 @@
                                 echo '<li class="dropdown user-block-sm user-menu">';
                                     echo '<a href="#" class="dropdown-toggle" data-toggle="dropdown">';
                                         echo "<img src='".$_SESSION['picture']."' class='user-image' alt='User Image'>";
-                                        echo '<?php echo "<span class=\'hidden-xs\'>".$_SESSION[\'username\']."</span>"; ?>';
+                                        echo '<?php echo "<span class=\'hidden-xs\'>'.$_SESSION["username"].'</span>';
                                     echo '</a>';
                                     echo '<ul class="dropdown-menu">';
                                         echo '<li class="user-footer">';
