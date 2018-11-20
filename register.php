@@ -53,8 +53,8 @@
         if(!isset($error)) {
             try {
                 //check if username or password exist in database
-                $stmt_username = $db->prepare('select username from users where UPPER(username) = :username');
-                $stmt_email = $db->prepare('select email from users where UPPER(email) = :email');
+                $stmt_username = $db->prepare('select username from users where username = :username');
+                $stmt_email = $db->prepare('select email from users where email = :email');
                 $stmt_username->execute(strtoupper($username));
                 $stmt_email->execute(strtoupper($email));
                 $res_username = $stmt_username->fetchAll();
