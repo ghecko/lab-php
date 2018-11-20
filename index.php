@@ -72,12 +72,12 @@
                             echo '<ul class="nav navbar-nav">';
                                 echo '<li class="dropdown user-block-sm user-menu">';
                                     echo '<a href="/login.php">';
-                                        echo '<i class="fas fa-sign-in-alt"></i> Login';
+                                        echo '<i class="fa fa-sign-in"></i> Login';
                                     echo '</a>';
                                 echo '</li>';
                                 echo '<li class="dropdown user-block-sm user-menu">';
                                     echo '<a href="/register.php">';
-                                        echo '<i class="fas fa-user-plus"></i> Login';
+                                        echo '<i class="fa fa-user-plus"></i> Register';
                                     echo '</a>';
                                 echo '</li>';
                             echo '</ul>';
