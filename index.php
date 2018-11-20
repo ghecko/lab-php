@@ -60,7 +60,7 @@
                                     echo '</a>';
                                     echo '<ul class="dropdown-menu">';
                                         echo '<li class="user-footer">';
-                                            echo '<div class="btn-group">';
+                                            echo '<div class="btn-group" style="vertical-align: middle;">';
                                                 echo '<a href="#" class="btn btn-info">Profile</a>';
                                                 echo '<a href="/logout.php" class="btn btn-danger">Sign out</a>';
                                             echo '</div>';
@@ -69,7 +69,7 @@
                                 echo '</li>';
                             echo '</ul>';
                         } else {
-                            echo '<div class="btn-group">';
+                            echo '<div class="btn-group" style="vertical-align: middle;">';
                                 echo '<a href="/login.php" class="btn btn-default">Login</a>';
                                 echo '<a href="" class="btn btn-default">Register</a>';
                             echo '</div>';
