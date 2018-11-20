@@ -55,8 +55,8 @@
                 //check if username or password exist in database
                 $stmt_username = $db->prepare('select username from users where UPPER(username) = :username');
                 $stmt_email = $db->prepare('select email from users where UPPER(email) = :email');
-                $stmt_username->execute(strtoupper($username));
-                $stmt_email->execute(strtoupper($email));
+                $stmt_username->execute(array(strtoupper($username)));
+                $stmt_email->execute(array(strtoupper($email)));
                 if(!$stmt_username->fetch()) {
                     if(!$stmt_email->fetch()) {
                         //insert into database
