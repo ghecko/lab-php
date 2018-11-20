@@ -71,10 +71,10 @@
                         header('Location: index.php');
                         exit;
                     } else {
-                        echo '<p class="error">"Email déjà enregistré"</p>';
+                        $error[] = 'Email déjà enregistré';
                     }
                 } else {
-                    echo '<p class="error">"Username non disponible"</p>';
+                    $error[] = 'Username non disponible';
                 }
 
             } catch(PDOException $e) {
