@@ -57,8 +57,8 @@
                 $stmt_email = $db->prepare('select email from users where UPPER(email) = :email');
                 $stmt_username->execute(strtoupper($username));
                 $stmt_email->execute(strtoupper($email));
-                if(mysqli_num_rows($stmt_username) == 0) {
-                    if(mysqli_num_rows($stmt_email) == 0) {
+                if($stmt_username->rowCount() == 0) {
+                    if($stmt_email->rowCount() == 0) {
                         //insert into database
                         $stmt = $db->prepare('INSERT INTO users (username,password,email) VALUES (:username, :password, :email)');
                         $stmt->execute(array(
