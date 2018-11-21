@@ -55,8 +55,8 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
                             $file_tmp = $_FILES['image']['tmp_name'];
                             $file_type = $_FILES['image']['type'];
                             $file_ext=strtolower(end(explode('.',$_FILES['image']['name'])));
-                            print($file_ext);
-                            print(strtolower(explode('.',$file_name)));
+                            echo $file_ext.'<br />';($file_ext);
+                            echo strtolower(explode('.',$file_name)).'<br />';
 
                             /*$expensions= array("jpeg","jpg","png");
 
