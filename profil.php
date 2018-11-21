@@ -47,13 +47,12 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
                 if(!isset($error)){
 
                     try {
-                        $error[] = 'pictures = '.$_POST['profilePicture'];
                         if(isset($_FILES["profilePicture"])) {
-                            $errors= array();
-                            $file_name = $_FILES['image']['name'];
-                            $file_size = $_FILES['image']['size'];
-                            $file_tmp = $_FILES['image']['tmp_name'];
-                            $file_type = $_FILES['image']['type'];
+                            $error[] = 'pictures = '.$_FILES['profilePicture']['name'];
+                            $file_name = $_FILES['profilePicture']['name'];
+                            $file_size = $_FILES['profilePicture']['size'];
+                            $file_tmp = $_FILES['profilePicture']['tmp_name'];
+                            $file_type = $_FILES['profilePicture']['type'];
                             $file_ext=strtolower(end(explode('.',$_FILES['image']['name'])));
                             echo $file_ext.'<br />';($file_ext);
                             echo strtolower(explode('.',$file_name)).'<br />';
