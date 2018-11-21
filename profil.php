@@ -212,7 +212,7 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
 
 
                                     //redirect to index page
-                                    header('Location: index.php?page=profil');
+                                    header('Location: profil.php');
                                     exit;
 
                                 } catch(PDOException $e) {
