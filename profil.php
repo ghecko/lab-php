@@ -125,7 +125,7 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
             try {
 
                 $stmt = $db->prepare('SELECT user_id, username, email, pictures FROM users WHERE user_id = :user_id') ;
-                $stmt->execute(array(':user_id' => $_GET['id']));
+                $stmt->execute(array(':user_id' => $_SESSION['user_id']));
                 $row = $stmt->fetch();
 
             } catch(PDOException $e) {
@@ -140,9 +140,9 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
                     <form action="profil.php" method="post" enctype = "multipart/form-data">
                         <div class="form-group has-feedback">
                             <img src="<?php echo $row['pictures'];?>" class="user-image" alt="User Image">
-                            <a type="button" class="btn btn-primary">Changer photo de profil
-                                <input type="file" name="profilePicture">
-                            </a>
+                            <span class="btn btn-default btn-file">
+                                Changer <input type="file" name="profilePicture">
+                            </span>
                         </div>
                         <input type='hidden' name='user_id' value='<?php echo $row['user_id'];?>'>
                         <div class="form-group has-feedback">
