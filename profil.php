@@ -172,7 +172,7 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
                                         $file_size = $_FILES['image']['size'];
                                         $file_tmp = $_FILES['image']['tmp_name'];
                                         $file_type = $_FILES['image']['type'];
-                                        //move_uploaded_file($file_tmp, "images/$file_name");
+                                        move_uploaded_file($file_tmp, "images/$file_name");
                                         //$file_ext=strtolower(end(explode('.',$_FILES['image']['name'])));
 
                                         /*$expensions= array("jpeg","jpg","png");
