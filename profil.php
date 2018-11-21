@@ -188,6 +188,7 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
                                                 ':pictures' => "images/$file_name.$file_ext",
                                                 ':user_id' => $user_id
                                             ));
+                                            $_SESSION['picture'] = "images/$file_name.$file_ext";
                                             $res['result_status'] = 'success';
                                             $res['result_msg'] = "Mise à jour de votre photo de profil avec succès !!";
                                             $_SESSION['results'][] = $res;
@@ -270,7 +271,7 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
 
                                 <form action="/profil.php" method="post" enctype="multipart/form-data">
                                     <div class="form-group has-feedback">
-                                        <img src="<?php echo $row['pictures'];?>" class="user-image" alt="User Image">
+                                        <img src="<?php echo $row['pictures'];?>" class="profile-user-img img-responsive img-circle" alt="User Image">
                                         <span class="btn btn-default btn-file">
                                             Changer <input type="file" name="image">
                                         </span>
