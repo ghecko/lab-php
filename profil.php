@@ -69,6 +69,7 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
                             if(empty($error)==true) {
                                 move_uploaded_file($file_tmp,"images/".$file_name);
                                 echo "Success";
+                                //$_SESSION['pictures'] =
                             }*/
                         }
 
@@ -82,6 +83,12 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
                                 ':email' => $email,
                                 ':user_id' => $user_id
                             ));
+                            $_SESSION['username'] = $username;
+                            echo '<div class="alert alert-success alert-dismissible">';
+                            echo '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>';
+                            echo '<h4><i class="icon fa fa-check"></i> Succès !</h4>';
+                            echo 'Donnée mise à jour avec succès';
+                            echo '</div>';
 
 
                         } else {
@@ -93,6 +100,12 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
                                 ':email' => $email,
                                 ':user_id' => $user_id,
                             ));
+                            $_SESSION['username'] = $username;
+                            echo '<div class="alert alert-success alert-dismissible">';
+                                echo '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>';
+                                echo '<h4><i class="icon fa fa-check"></i> Succès !</h4>';
+                                echo 'Donnée mise à jour avec succès';
+                            echo '</div>';
 
                         }
 
@@ -139,7 +152,7 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
                         <div class="form-group has-feedback">
                             <img src="<?php echo $row['pictures'];?>" class="user-image" alt="User Image">
                             <span class="btn btn-default btn-file">
-                                Changer <input type="file" name="profilePicture">
+                                Changer <input type="file" name="image">
                             </span>
                         </div>
                         <input type='hidden' name='user_id' value='<?php echo $row['user_id'];?>'>
