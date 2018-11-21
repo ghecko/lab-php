@@ -112,22 +112,23 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
                     <div class="box-body">
                         <?php
                         //Check if status exist from previous post
-                        if(isset($_SESSION['result_status'])) {
-                            if($_SESSION['result_status'] == 'error') {
-                                echo '<div class="alert alert-danger alert-dismissible">';
-                                    echo '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>';
-                                    echo '<h4><i class="icon fa fa-ban"></i> Echec !</h4>';
-                                    echo $_SESSION['result_msg'];
-                                echo '</div>';
-                            } else {
-                                echo '<div class="alert alert-success alert-dismissible">';
-                                    echo '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>';
-                                    echo '<h4><i class="icon fa fa-check"></i> Succès !</h4>';
-                                    echo $_SESSION['result_msg'];
-                                echo '</div>';
+                        if(isset($_SESSION['results'])) {
+                            foreach ($_SESSION['results'] as $res) {
+                                if($res['result_status'] =='error') {
+                                    echo '<div class="alert alert-danger alert-dismissible">';
+                                        echo '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>';
+                                        echo '<h4><i class="icon fa fa-ban"></i> Echec !</h4>';
+                                        echo $res['result_msg'];
+                                    echo '</div>';
+                                } else {
+                                    echo '<div class="alert alert-success alert-dismissible">';
+                                        echo '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>';
+                                        echo '<h4><i class="icon fa fa-check"></i> Succès !</h4>';
+                                        echo $res['result_msg'];
+                                    echo '</div>';
+                                }
                             }
-                            unset($_SESSION['result_status']);
-                            unset($_SESSION['result_msg']);
+                            unset($_SESSION['results']);
                         }
 
                         //if form has been submitted process it
@@ -164,36 +165,36 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
 
                             if(!isset($error)){
                                 try {
-                                    //TODO : a optimiser (result code send)
                                     if(isset($_FILES['image']['name'])) {
-                                        $_SESSION['result_status'] = 'error';
-                                        $_SESSION['result_msg'] = 'ext = '.strtolower(end(explode('.',$_FILES['image']['name'])));;
-                                        $file_name = $_FILES['image']['name'];
-                                        //$file_name = uniqid();
+                                        $file_ext = strtolower(end(explode('.', $_FILES['image']['name'])));
+                                        $file_name = uniqid();
                                         $file_size = $_FILES['image']['size'];
                                         $file_tmp = $_FILES['image']['tmp_name'];
                                         $file_type = $_FILES['image']['type'];
-                                        move_uploaded_file($file_tmp, "images/$file_name");
-                                        //$file_ext=strtolower(end(explode('.',$_FILES['image']['name'])));
+                                        $type_mime = array("image/jpeg", "image/jpg", "image/png", "image/gif");
 
-                                        /*$expensions= array("jpeg","jpg","png");
-
-                                        if(in_array($file_ext,$expensions)=== false){
-                                            $error[] = "extension not allowed, please choose a JPEG or PNG file.";
+                                        if(!in_array($file_type, $type_mime)) {
+                                            $res['result_status'] = 'error';
+                                            $res['result_msg'] = "Le fichier uploadé n'est pas une image !!";
+                                            $_SESSION['results'][] = $res;
+                                        } elseif ($file_size > 2097152) {
+                                            $res['result_status'] = 'error';
+                                            $res['result_msg'] = "L'image uploadé ne doit pas dépasser 2M !!";
+                                            $_SESSION['results'][] = $res;
+                                        } else {
+                                            move_uploaded_file($file_tmp,"images/$file_name.$file_ext");
+                                            $stmt = $db->prepare('UPDATE users SET pictures = :pictures WHERE user_id = :user_id') ;
+                                            $stmt->execute(array(
+                                                ':pictures' => "images/$file_name.$file_ext",
+                                                ':user_id' => $user_id
+                                            ));
+                                            $res['result_status'] = 'success';
+                                            $res['result_msg'] = "Mise à jour de votre photo de profil avec succès !!";
+                                            $_SESSION['results'][] = $res;
                                         }
-
-                                        if($file_size > 2097152) {
-                                            $error[] = 'File size must be excately 2 MB';
-                                        }
-
-                                        if(empty($error)==true) {
-                                            move_uploaded_file($file_tmp,"images/".$file_name);
-                                            echo "Success";
-                                            //$_SESSION['pictures'] =
-                                        }*/
                                     }
 
-                                    /*if(isset($password)){
+                                    if(isset($password)){
 
                                         //update into database
                                         $stmt = $db->prepare('UPDATE users SET username = :username, password = :password, email = :email WHERE user_id = :user_id') ;
@@ -204,8 +205,9 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
                                             ':user_id' => $user_id
                                         ));
                                         $_SESSION['username'] = $username;
-                                        $_SESSION['result_msg'] = 'Donnée Mise à jour avec Succès';
-                                        $_SESSION['result_status'] = 'success';
+                                        $res['result_msg'] = 'Donnée Mise à jour avec Succès';
+                                        $res['result_status'] = 'success';
+                                        $_SESSION['results'][] = $res;
 
 
                                     } else {
@@ -218,9 +220,10 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
                                             ':user_id' => $user_id,
                                         ));
                                         $_SESSION['username'] = $username;
-                                        $_SESSION['result_msg'] = 'Donnée Mise à jour avec Succès';
-                                        $_SESSION['result_status'] = 'success';
-                                    }*/
+                                        $res['result_msg'] = 'Donnée Mise à jour avec Succès';
+                                        $res['result_status'] = 'success';
+                                        $_SESSION['results'][] = $res;
+                                    }
 
 
                                     //redirect to index page
