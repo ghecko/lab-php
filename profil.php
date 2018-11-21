@@ -146,11 +146,11 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
                         </div>
                         <input type='hidden' name='user_id' value='<?php echo $row['user_id'];?>'>
                         <div class="form-group has-feedback">
-                            <input type="text" class="form-control" placeholder="username" value="<?php echo $row['username'];?>">
+                            <input type="text" class="form-control" placeholder="username" name="username" value="<?php echo $row['username'];?>">
                             <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         </div>
                         <div class="form-group has-feedback">
-                            <input type="email" class="form-control" placeholder="Email" value="<?php echo $row['email'];?>">
+                            <input type="email" class="form-control" placeholder="Email" name="email" value="<?php echo $row['email'];?>">
                             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                         </div>
                         <div class="form-group has-feedback">
