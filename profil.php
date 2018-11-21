@@ -47,7 +47,7 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
                 if(!isset($error)){
 
                     try {
-                        if(isset($profilePictures)) {
+                        if(isset($_FILES['profilePicture']['name'])) {
                             $error[] = 'pictures = '.$_FILES['profilePicture']['name'];
                             $file_name = $_FILES['profilePicture']['name'];
                             $file_size = $_FILES['profilePicture']['size'];
@@ -136,7 +136,7 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
                 <div class="register-box-body">
                     <p class="login-box-msg">Mon profil</p>
 
-                    <form action="/index.php?page=profil" method="post" enctype="multipart/form-data">
+                    <form action="/profil.php" method="post" enctype="multipart/form-data">
                         <div class="form-group has-feedback">
                             <img src="<?php echo $row['pictures'];?>" class="user-image" alt="User Image">
                             <span class="btn btn-default btn-file">
