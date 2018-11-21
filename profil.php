@@ -47,8 +47,7 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
                 if(!isset($error)){
 
                     try {
-                        print_r($_POST['profilePicture']);
-                        echo $_POST['filename'];
+                        $error[] = 'pictures = '.$_POST['profilePicture'];
                         if(isset($_FILES["profilePicture"])) {
                             $errors= array();
                             $file_name = $_FILES['image']['name'];
