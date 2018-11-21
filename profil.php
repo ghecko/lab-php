@@ -100,7 +100,7 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
 
 
                         //redirect to index page
-                        header('Location: users.php?action=updated');
+                        header('Location: index.php?page=profil');
                         exit;
 
                     } catch(PDOException $e) {
@@ -137,7 +137,7 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
                 <div class="register-box-body">
                     <p class="login-box-msg">Mon profil</p>
 
-                    <form action="profil.php" method="post" enctype = "multipart/form-data">
+                    <form action="/index.php?page=profil" method="post" enctype = "multipart/form-data">
                         <div class="form-group has-feedback">
                             <img src="<?php echo $row['pictures'];?>" class="user-image" alt="User Image">
                             <span class="btn btn-default btn-file">
