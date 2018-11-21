@@ -273,7 +273,7 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
                                     <div class="form-group has-feedback">
                                         <img src="<?php echo $row['pictures'];?>" class="profile-user-img img-responsive img-circle" alt="User Image">
                                         <span class="btn btn-default btn-file">
-                                            Changer <input class="btn btn-primary btn-block" type="file" name="image">
+                                            Changer <input type="file" name="image">
                                         </span>
                                     </div>
                                     <input type='hidden' name='user_id' value='<?php echo $row['user_id'];?>'>
