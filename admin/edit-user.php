@@ -87,7 +87,6 @@ if(!$user->is_admin()) {
 						':username' => $username,
 						':email' => $email,
 						':user_id' => $user_id,
-                        ':admin' => $admin
 					));
 
 				}

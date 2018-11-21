@@ -1,4 +1,3 @@
-<!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>Vue d'ensemble</h1>
 </section>
