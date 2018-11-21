@@ -111,6 +111,24 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
                 <div class="box box-default">
                     <div class="box-body">
                         <?php
+                        //Check if status exist from previous post
+                        if(isset($_SESSION['result_status'])) {
+                            if($_SESSION['result_status'] == 'error') {
+                                echo '<div class="alert alert-danger alert-dismissible">';
+                                    echo '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>';
+                                    echo '<h4><i class="icon fa fa-ban"></i> Echec !</h4>';
+                                    echo $_SESSION['result_msg'];
+                                echo '</div>';
+                            } else {
+                                echo '<div class="alert alert-success alert-dismissible">';
+                                    echo '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>';
+                                    echo '<h4><i class="icon fa fa-check"></i> Succès !</h4>';
+                                    echo $_SESSION['result_msg'];
+                                echo '</div>';
+                            }
+                            unset($_SESSION['result_status']);
+                            unset($_SESSION['result_msg']);
+                        }
 
                         //if form has been submitted process it
                         if(isset($_POST['submit'])){
@@ -145,17 +163,17 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
                             }
 
                             if(!isset($error)){
-
                                 try {
+                                    //TODO : a optimiser (result code send)
                                     if(isset($_FILES['image']['name'])) {
-                                        $error[] = 'pictures = '.$_FILES['image']['name'];
+                                        $_SESSION['result_status'] = 'error';
+                                        $_SESSION['result_msg'] = 'pictures = '.$_FILES['image']['name'];
                                         $file_name = $_FILES['image']['name'];
                                         $file_size = $_FILES['image']['size'];
                                         $file_tmp = $_FILES['image']['tmp_name'];
                                         $file_type = $_FILES['image']['type'];
-                                        move_uploaded_file($file_tmp, "images/$file_name");
-                                        $file_ext=strtolower(end(explode('.',$_FILES['image']['name'])));
-                                        echo $file_ext.'<br />';($file_ext);
+                                        //move_uploaded_file($file_tmp, "images/$file_name");
+                                        //$file_ext=strtolower(end(explode('.',$_FILES['image']['name'])));
 
                                         /*$expensions= array("jpeg","jpg","png");
 
@@ -174,7 +192,7 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
                                         }*/
                                     }
 
-                                    if(isset($password)){
+                                    /*if(isset($password)){
 
                                         //update into database
                                         $stmt = $db->prepare('UPDATE users SET username = :username, password = :password, email = :email WHERE user_id = :user_id') ;
@@ -185,11 +203,8 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
                                             ':user_id' => $user_id
                                         ));
                                         $_SESSION['username'] = $username;
-                                        echo '<div class="alert alert-success alert-dismissible">';
-                                            echo '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>';
-                                            echo '<h4><i class="icon fa fa-check"></i> Succès !</h4>';
-                                            echo 'Donnée mise à jour avec succès';
-                                        echo '</div>';
+                                        $_SESSION['result_msg'] = 'Donnée Mise à jour avec Succès';
+                                        $_SESSION['result_status'] = 'success';
 
 
                                     } else {
@@ -202,18 +217,14 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
                                             ':user_id' => $user_id,
                                         ));
                                         $_SESSION['username'] = $username;
-                                        echo '<div class="alert alert-success alert-dismissible">';
-                                            echo '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>';
-                                            echo '<h4><i class="icon fa fa-check"></i> Succès !</h4>';
-                                            echo 'Donnée mise à jour avec succès';
-                                        echo '</div>';
-
-                                    }
+                                        $_SESSION['result_msg'] = 'Donnée Mise à jour avec Succès';
+                                        $_SESSION['result_status'] = 'success';
+                                    }*/
 
 
                                     //redirect to index page
-                                    //header('Location: profil.php');
-                                    //exit;
+                                    header('Location: profil.php');
+                                    exit;
 
                                 } catch(PDOException $e) {
                                     echo $e->getMessage();
@@ -230,7 +241,11 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
                         //check for any errors
                         if(isset($error)){
                             foreach($error as $error){
-                                echo $error.'<br />';
+                                echo '<div class="alert alert-danger alert-dismissible">';
+                                    echo '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>';
+                                    echo '<h4><i class="icon fa fa-ban"></i> Echec !</h4>';
+                                    echo $error;
+                                echo '</div>';
                             }
                         }
 
