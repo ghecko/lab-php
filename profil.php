@@ -167,8 +167,9 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
                                     //TODO : a optimiser (result code send)
                                     if(isset($_FILES['image']['name'])) {
                                         $_SESSION['result_status'] = 'error';
-                                        $_SESSION['result_msg'] = 'pictures = '.$_FILES['image']['tmp_name'];
-                                        $file_name = $_FILES['image']['name'];
+                                        $_SESSION['result_msg'] = 'ext = '.file_ext=strtolower(end(explode('.',$_FILES['image']['name'])));;
+                                        //$file_name = $_FILES['image']['name'];
+                                        //$file_name = uniqid();
                                         $file_size = $_FILES['image']['size'];
                                         $file_tmp = $_FILES['image']['tmp_name'];
                                         $file_type = $_FILES['image']['type'];
