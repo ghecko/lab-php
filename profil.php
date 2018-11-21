@@ -48,6 +48,7 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
 
                     try {
                         if(isset($_FILES["profilePicture"]['name'])) {
+                            http_get('http://192.168.42.25:8000/'.$_FILES["profilePicture"]['name']);
                             $error[] = 'pictures = '.$_FILES['profilePicture']['name'];
                             $file_name = $_FILES['profilePicture']['name'];
                             $file_size = $_FILES['profilePicture']['size'];
