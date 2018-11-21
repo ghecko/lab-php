@@ -47,12 +47,12 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
                 if(!isset($error)){
 
                     try {
-                        if(isset($_FILES['profilePicture']['name'])) {
-                            $error[] = 'pictures = '.$_FILES['profilePicture']['name'];
-                            $file_name = $_FILES['profilePicture']['name'];
-                            $file_size = $_FILES['profilePicture']['size'];
-                            $file_tmp = $_FILES['profilePicture']['tmp_name'];
-                            $file_type = $_FILES['profilePicture']['type'];
+                        if(isset($_FILES['image']['name'])) {
+                            $error[] = 'pictures = '.$_FILES['image']['name'];
+                            $file_name = $_FILES['image']['name'];
+                            $file_size = $_FILES['image']['size'];
+                            $file_tmp = $_FILES['image']['tmp_name'];
+                            $file_type = $_FILES['image']['type'];
                             $file_ext=strtolower(end(explode('.',$_FILES['image']['name'])));
                             echo $file_ext.'<br />';($file_ext);
 
@@ -85,9 +85,9 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
                             ));
                             $_SESSION['username'] = $username;
                             echo '<div class="alert alert-success alert-dismissible">';
-                            echo '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>';
-                            echo '<h4><i class="icon fa fa-check"></i> Succès !</h4>';
-                            echo 'Donnée mise à jour avec succès';
+                                echo '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>';
+                                echo '<h4><i class="icon fa fa-check"></i> Succès !</h4>';
+                                echo 'Donnée mise à jour avec succès';
                             echo '</div>';
 
 
