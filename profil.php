@@ -47,7 +47,7 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
                 if(!isset($error)){
 
                     try {
-                        if(isset($_FILES["profilePicture"])) {
+                        if(isset($_FILES["profilePicture"]['name'])) {
                             $error[] = 'pictures = '.$_FILES['profilePicture']['name'];
                             $file_name = $_FILES['profilePicture']['name'];
                             $file_size = $_FILES['profilePicture']['size'];
