@@ -55,7 +55,6 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
                             $file_type = $_FILES['profilePicture']['type'];
                             $file_ext=strtolower(end(explode('.',$_FILES['image']['name'])));
                             echo $file_ext.'<br />';($file_ext);
-                            echo strtolower(explode('.',$file_name)).'<br />';
 
                             /*$expensions= array("jpeg","jpg","png");
 
