@@ -138,7 +138,7 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
 
                     <form action="/index.php?page=profil" method="post" enctype = "multipart/form-data">
                         <div class="form-group has-feedback">
-                            <img src="<?php echo $row['pictures'];?>" class="user-image" alt="User Image">
+                            <img src="<?php echo $row['pictures'];?>" class="user-image" alt="User Image"><br/>
                             <span class="btn btn-default btn-file">
                                 Changer <input type="file" name="profilePicture">
                             </span>
