@@ -69,7 +69,7 @@
                                     echo '<ul class="dropdown-menu">';
                                         echo '<li class="user-footer">';
                                             echo '<div class="btn-group" style="vertical-align: middle;">';
-                                                echo '<a href="/index.php?page=profil" class="btn btn-info">Profile</a>';
+                                                echo '<a href="/profil.php" class="btn btn-info">Profile</a>';
                                                 echo '<a href="/logout.php" class="btn btn-danger">Sign out</a>';
                                             echo '</div>';
                                         echo '</li>';
