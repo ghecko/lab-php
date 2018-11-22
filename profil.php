@@ -206,7 +206,7 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
                                         }
                                     }
 
-                                    if(isset($password)){
+                                    if(strlen($password) > 0){
 
                                         //update into database
                                         $stmt = $db->prepare('UPDATE users SET username = :username, password = :password, email = :email WHERE user_id = :user_id') ;
