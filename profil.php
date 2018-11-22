@@ -134,21 +134,32 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
                         //if form has been submitted process it
                         if(isset($_POST['submit'])){
 
+                            //Get user infos
+                            try {
+
+                                $stmt = $db->prepare('SELECT user_id, username, email FROM users WHERE user_id = :user_id') ;
+                                $stmt->execute(array(':user_id' => $_SESSION['user_id']));
+                                $row = $stmt->fetch();
+
+                            } catch(PDOException $e) {
+                                echo $e->getMessage();
+                            }
+
                             //collect form data
                             extract($_POST);
 
                             //very basic validation
-                            if($username ==''){
+                            if($username == ''){
                                 $error[] = 'Please enter the username.';
                             }
 
                             if( strlen($password) > 0){
 
-                                if($password ==''){
+                                if($password == ''){
                                     $error[] = 'Please enter the password.';
                                 }
 
-                                if($passwordConfirm ==''){
+                                if($passwordConfirm == ''){
                                     $error[] = 'Please confirm the password.';
                                 }
 
@@ -211,7 +222,7 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
                                         $_SESSION['results'][] = $res;
 
 
-                                    } else {
+                                    } elseif ($row['username'] != $username or $row['email'] != $email) {
 
                                         //update database
                                         $stmt = $db->prepare('UPDATE users SET username = :username, email = :email WHERE user_id = :user_id') ;
