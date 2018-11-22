@@ -177,32 +177,34 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
                             if(!isset($error)){
                                 try {
                                     if(isset($_FILES['image']['name'])) {
-                                        $file_ext = strtolower(end(explode('.', $_FILES['image']['name'])));
-                                        $file_name = uniqid();
-                                        $file_size = $_FILES['image']['size'];
-                                        $file_tmp = $_FILES['image']['tmp_name'];
-                                        $file_type = $_FILES['image']['type'];
-                                        $type_mime = array("image/jpeg", "image/jpg", "image/png", "image/gif");
+                                        if($_FILES['image']['name'] != '') {
+                                            $file_ext = strtolower(end(explode('.', $_FILES['image']['name'])));
+                                            $file_name = uniqid();
+                                            $file_size = $_FILES['image']['size'];
+                                            $file_tmp = $_FILES['image']['tmp_name'];
+                                            $file_type = $_FILES['image']['type'];
+                                            $type_mime = array("image/jpeg", "image/jpg", "image/png", "image/gif");
 
-                                        if(!in_array($file_type, $type_mime)) {
-                                            $res['result_status'] = 'error';
-                                            $res['result_msg'] = "Le fichier uploadé n'est pas une image !!";
-                                            $_SESSION['results'][] = $res;
-                                        } elseif ($file_size > 2097152) {
-                                            $res['result_status'] = 'error';
-                                            $res['result_msg'] = "L'image uploadé ne doit pas dépasser 2M !!";
-                                            $_SESSION['results'][] = $res;
-                                        } else {
-                                            move_uploaded_file($file_tmp,"images/$file_name.$file_ext");
-                                            $stmt = $db->prepare('UPDATE users SET pictures = :pictures WHERE user_id = :user_id') ;
-                                            $stmt->execute(array(
-                                                ':pictures' => "images/$file_name.$file_ext",
-                                                ':user_id' => $user_id
-                                            ));
-                                            $_SESSION['picture'] = "images/$file_name.$file_ext";
-                                            $res['result_status'] = 'success';
-                                            $res['result_msg'] = "Mise à jour de votre photo de profil avec succès !!";
-                                            $_SESSION['results'][] = $res;
+                                            if(!in_array($file_type, $type_mime)) {
+                                                $res['result_status'] = 'error';
+                                                $res['result_msg'] = "Le fichier uploadé n'est pas une image !!";
+                                                $_SESSION['results'][] = $res;
+                                            } elseif ($file_size > 2097152) {
+                                                $res['result_status'] = 'error';
+                                                $res['result_msg'] = "L'image uploadé ne doit pas dépasser 2M !!";
+                                                $_SESSION['results'][] = $res;
+                                            } else {
+                                                move_uploaded_file($file_tmp,"images/$file_name.$file_ext");
+                                                $stmt = $db->prepare('UPDATE users SET pictures = :pictures WHERE user_id = :user_id') ;
+                                                $stmt->execute(array(
+                                                    ':pictures' => "images/$file_name.$file_ext",
+                                                    ':user_id' => $user_id
+                                                ));
+                                                $_SESSION['picture'] = "images/$file_name.$file_ext";
+                                                $res['result_status'] = 'success';
+                                                $res['result_msg'] = "Mise à jour de votre photo de profil avec succès !!";
+                                                $_SESSION['results'][] = $res;
+                                            }
                                         }
                                     }
 
