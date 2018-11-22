@@ -217,7 +217,7 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
                                             ':user_id' => $user_id
                                         ));
                                         $_SESSION['username'] = $username;
-                                        $res['result_msg'] = 'Donnée Mise à jour avec Succès';
+                                        $res['result_msg'] = 'Donnée Mise à jour avec Succès pwd:'.$password.' pwdlength:'.strlen($password);
                                         $res['result_status'] = 'success';
                                         $_SESSION['results'][] = $res;
 
